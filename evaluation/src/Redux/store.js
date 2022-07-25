@@ -1,5 +1,15 @@
-import { reduer } from "./reducer";
-import { legacy_createStore as createStore } from "redux";
-
-export const store = createStore(reduer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() )
+import {
+    legacy_createStore as createStore,
+    combineReducers,
+    applyMiddleware,
+  } from "redux";
+  
+  import { BlogReducer } from "./Blogs/reducer";
+  import { LoginReducer } from "./Login/reducer";
+  import thunk from "redux-thunk"
+  
+  const rootReducer = combineReducers(
+    { blogs: BlogReducer, login: LoginReducer}
+    );
+  
+  export const store = createStore(rootReducer, applyMiddleware(thunk))

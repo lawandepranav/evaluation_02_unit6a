@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from "styled-components" 
 import {Link} from "react-router-dom"
-const Navbar = () => {
 
+
+const Navbar = () => {
+ 
     const NavbarWrapper = styled.div`
     position:fixed;
     width:100%;
@@ -22,12 +24,16 @@ const Navbar = () => {
       text-decoration:none;
       font-size:20px;
     `
-  return (
-    <NavbarWrapper>
-        <StyledLink  to = "/">Home</StyledLink>
-    </NavbarWrapper>
-      
-  )
+    return (
+      <NavbarWrapper>
+          <StyledLink  to = "/">Home</StyledLink>
+          <StyledLink  to = "/Blogcreate">Blogs</StyledLink>
+          <StyledLink  to = "/Login">Login</StyledLink>
+        
+      </NavbarWrapper>
+        
+  
+    )
 }
 
 export default Navbar
