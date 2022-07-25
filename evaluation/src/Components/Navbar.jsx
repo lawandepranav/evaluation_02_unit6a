@@ -25,11 +25,8 @@ const Navbar = () => {
   return (
     <NavbarWrapper>
         <StyledLink  to = "/">Home</StyledLink>
-        <StyledLink  to = "/Bookings">Bookings</StyledLink>
-        <StyledLink  to = "/login">Login</StyledLink>
     </NavbarWrapper>
       
-
   )
 }
 
