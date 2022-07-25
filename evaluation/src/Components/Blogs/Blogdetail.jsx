@@ -1,39 +1,32 @@
 import React from "react";
+import { useEffect } from "react";
 import {useParams} from "react-router-dom"
 
 const Blogdetails =()=>{
     const {id} = useParams()
-    const [movieDetails,setMovieDetails] = React.useState({})
-    const [movieBookedDetails,setMovieBookedDetails] = React.useState({})
+    const [blogDetails,setBlogDetails] = React.useState({})
+  
     useEffect(()=>{
-       fetch (`http://localhost:8080/movies/${id}`)
+       fetch (`http://localhost:8080/blogs`)
        .then((res) => (res.json()))
-       .then ((res) =>setMovieDetails(res))
+       .then ((res) =>setBlogDetails(res))
     },[id])
 
 
-    useEffect(()=>{
-      fetch (`http://localhost:8080/moviesBooked/${id}`)
-      .then((res) => (res.json()))
-      .then ((res) =>setMovieBookedDetails(res))
-   },[id])
-   console.log(movieBookedDetails)
+   
 
   return (
     <div>
-       <h1 style = {{color: "teal",marginTop:"80px"}}>Movie Details</h1>
+       <h1 style = {{color: "teal",marginTop:"80px"}}>Blog Details</h1>
        {
            
           <div style = {{marginTop:"px",display:"flex", flexDirection:"column"}} >
-             <img  style = {{width:"300px",height:"300px"}} src = {movieDetails.poster_path} alt = "poster"/>
-             <p>{movieDetails.title}</p>
-            <p> {movieDetails.original_title}</p>
-             <p>{movieDetails.release_date}</p>
-             <p style = {{width:"40%",textAlign:"left"}}>{movieDetails.overview}</p>
-             <p>{movieDetails.vote_count}</p>
+             <p>{blogDetails.title}</p>
+            <p> {blogDetails.author}</p>
+             <p>{blogDetails.published_on}</p>
+             <p style = {{width:"40%",textAlign:"left"}}>{blogDetails.content}</p>
+             <p>{blogDetails.publication}</p>
 
-       
-             <buton></buton>
             </div>
            
        }
