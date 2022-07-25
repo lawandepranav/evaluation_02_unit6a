@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom"
 
 const Blogdetails =()=>{
     const {id} = useParams()
-    const [blogDetails,setBlogDetails] = React.useState({})
+    const [blogs,setBlogDetails] = React.useState({})
   
     useEffect(()=>{
        fetch (`http://localhost:8080/blogs`)
@@ -17,18 +17,17 @@ const Blogdetails =()=>{
 
   return (
     <div>
-       <h1 style = {{color: "teal",marginTop:"80px"}}>Blog Details</h1>
-       {
-           
-          <div style = {{marginTop:"px",display:"flex", flexDirection:"column"}} >
-             <p>{blogDetails.title}</p>
-            <p> {blogDetails.author}</p>
-             <p>{blogDetails.published_on}</p>
-             <p style = {{width:"40%",textAlign:"left"}}>{blogDetails.content}</p>
-             <p>{blogDetails.publication}</p>
+       <h1 >Blog Details</h1>
+       {blogs.map((item)=>(
+       <div  >
+             <p>{item.title}</p>
+            <p> {item.author}</p>
+             <p>{item.published_on}</p>
+             <p >{item.content}</p>
+             <p>{item.publication}</p>
 
             </div>
-           
+            )) 
        }
     </div>
   )

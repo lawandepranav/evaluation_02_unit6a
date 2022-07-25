@@ -1,92 +1,84 @@
 import React from "react";
+// import styled from "styled-components";
+import axios from 'axios'
+import { useState } from "react";
 
-import { useSelector ,useDispatch } from 'react-redux'
-import { reg } from '../redux/action'
-import Registerresponse from './Registerresponse'
-import {useNavigate} from 'react-router-dom'
+
 const Blogcreate = () => {
-  const [name,setname] = useState()
-  const [email,setemail] = useState()
-  const [password,setpassword] = useState()
-  const [username,setusername]  = useState()
-  const [mobile,setmob] = useState()
-  const [des,setdes] = useState()
-  const [all,stall] =useState({})
-  console.log(all)
-  const navigate = useNavigate()
-  const {register} = useSelector((store)=>store)
-  const dispatch = useDispatch()
-useEffect(()=>{
-    fetchs()
-    
-},[all])
-const clla = () => {
-  navigate("./regresponse")
-}
-const fetchs = () => {
-    fetch(`https://masai-api-mocker.herokuapp.com/auth/register`,{
-      method: "POST",
-      body:JSON.stringify(all)
-      ,
-      headers: {
-        "content-Type": "application/json"
-      }
-        
-    
-    }).then((res)=> res.json()).then((res) => {
-      console.log(res)
-      dispatch(reg(res.message))
-      
-      clla()
-    }).catch((err)=>{
-      console.log(err)
-    })
-}
-console.log(all)
-  return (
-    <div className='reg'>
-      <h1>Registration</h1>
-      <input type="text" placeholder='Enter Name' name="" id="" value={name} onChange={(e)=>{
-        setname(e.target.value)
-      }} />
-      <br />
-      <input type="text" placeholder='Enter Email' name="" id="" value={email} onChange={(e)=>{
-        setemail(e.target.value)
-      }} /> 
-      <br />
-       <input type="text" placeholder='Enter password' name="" id="" value={password} onChange={(e)=>{
-        setpassword(e.target.value)
-      }} />
-      <br />
-      <input type="text" placeholder='Enter username' name="" id="" value={username} onChange={(e)=>{
-        setusername(e.target.value)
-      }} />
-      <br />
-      <input type="text" placeholder='Enter Mobile No' name="" id="" value={mobile} onChange={(e)=>{
-        setmob(e.target.value)
-      }} />
-      <br />
-      <input type="text" placeholder='Enter Description' name="" id="" value={des} onChange={(e)=>{
-        setdes(e.target.value)
-      }} />
-      <br />
 
-      <button onClick={()=>{
-        if(name==undefined || email==undefined || password==undefined || username==undefined || mobile==undefined || des==undefined){
-            alert("Please Fill Required Places ")
-            return
-        }
-        stall({
-            name:name,
-            email:email,
-            password:password,
-            username:username,
-            mobile:mobile,
-            description:des
-        })
-      }}>Register</button>
+//     let Button = styled.button`
+//   padding: 5px 10px;
+//   color: #ffffff;
+//   background-color: black;
+//   font-weight: 400;
+//   border-radius: 5px;
+//   margin-left: 10px;
+//   &:hover {
+//     color: black;
+//     background-color: #ffffff;
+//     border: 1px solid black;
+//     cursor: pointer;
+//   }
+// `;
+
+  const [title,settitle] = useState()
+  const [author,setAuthor] = useState()
+  const [content,setContent] = useState()
+  const [publication,setPublication]  = useState()
+  const [published_on, setPublished] = useState()
+
+
+  const handleSubmit=(e) =>{
+    e.preventDefault();
+    const data = {
+    title,
+    author,
+    content,
+    publication,
+    published_on
+  };
+
+axios({
+    method: 'post',
+    url: `http://localhost:8080/blogs`,
+    data: data,
+})
+.then(function (response) {
+    console.log(response);
+})
+.catch(function (error) {
+    console.log(error);
+});
+  }
+
+  return (
+    <div >
+      <h1>Make Your Blog</h1>
+      <input type="text" placeholder='Enter Name' onChange={(e)=>{
+        settitle(e.target.value)
+      }} />
+      
+      <input type="text" placeholder='Enter Author'   onChange={(e)=>{
+        setAuthor(e.target.value)
+      }} /> 
+     
+       <input type="text" placeholder='Content'  onChange={(e)=>{
+        setContent(e.target.value)
+      }} />
+      
+      <input type="text" placeholder='Enter Publication' onChange={(e)=>{
+        setPublication(e.target.value)
+      }} />
+    
+      <input type="date" placeholder='Date' onChange={(e)=>{
+        setPublished(e.target.value)
+      }} />
+     
+      
+      <button type="submit" onClick={handleSubmit}>Submit</button>
     
     </div>
   )
 }
 export default Blogcreate;
+
