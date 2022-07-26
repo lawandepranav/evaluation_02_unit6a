@@ -1,11 +1,14 @@
-import { LOGIN} from "./action";
 
-export const LoginReducer = (state={login:{}},{type,payload}) => {
-    switch(type)
+import {LOGIN} from "./action";
+
+
+export const LoginReducer = (state={isAuth:false},action) => {
+    switch(action.type)
     {
         case LOGIN: {
             return {
-                ...state,login:payload
+                ...state,
+                isAuth:state.isAuth
             }
         }
       

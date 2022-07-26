@@ -1,44 +1,37 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux'
-import { loginUser } from '../Redux/Login/action'
+import { useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux"
+import {loginUser} from "../Redux/Login/action"
 
 const Login = () => {
-  const navigate = useNavigate()
-  const{login} = useSelector((store)=>store)
-  const dispatch = useDispatch()
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [all, setall]=React.useState({})
- 
+  const navigate = useNavigate();
+  const dispatch=useDispatch();
 
-  React.useEffect(()=>{
-    fetchUser()
-    
-},[all])
-
-const fetchUser = () => {
-    fetch(`https://reqres.in/api/login`,{
+  const handleLogin = () => {
+    const payload = { email, password };
+    fetch(`https://reqres.in/api/login`, {
       method: "POST",
-      body:JSON.stringify(all)
-      ,
+      body: JSON.stringify(payload),
       headers: {
-        "content-Type": "application/json"
+        "Content-Type": "application/json"
       }
-        
-    
-    }).then((res)=> res.json()).then((res) => {
-      console.log(res)
-      dispatch(loginUser({
-        token:res.token,
-        email:email
-      }))
-     //navigate("./Home")
-  
-    }).catch((err)=>{
-      console.log(err)
     })
-}
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.token) {
+          dispatch(loginUser(true))
+          navigate("/");
+        }else{
+          alert("Please fill Correct details")
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <h1>LOGIN</h1>
@@ -52,7 +45,6 @@ const fetchUser = () => {
         />
       </label>
       <br />
-      <br />
       <label>
         PASSWORD
         <input
@@ -62,21 +54,10 @@ const fetchUser = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <br />
-      <br />
-      <button onClick={()=>{
-    if(email===undefined || password === undefined)
-    {
-      alert("Please Fill required places")
-      return
-    }
-    setall({
-        email:email,
-        password:password
-    })
-    console.log(all)
-   }}>LOGIN</button>
+      <button onClick={handleLogin}>LOGIN</button>
     </div>
   );
 };
+
 export default Login;
+

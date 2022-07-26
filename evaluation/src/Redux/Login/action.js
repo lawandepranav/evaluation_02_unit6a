@@ -1,7 +1,9 @@
 export const LOGIN = "LOGIN"
 
 
-export const loginUser = (payload) => ({
+
+export const loginUser = () => ({
     type:LOGIN,
-    payload
+
 })
+

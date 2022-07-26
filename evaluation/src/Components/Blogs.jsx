@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Button } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect } from "react";
  const Blogs =()=>{
@@ -31,14 +31,13 @@ let Title = styled.h4`
 color:blue;
 `;
 let Value = styled.p`
-
+font-family: Arial, Helvetica, sans-serif;
 `;
 
 const handleDelete= (itemId)=>{
   
          axios.delete(`http://localhost:8080/blogs/${itemId}`)
          .then(() => setStatus('Delete successful'));
-
 
 }
 
@@ -73,7 +72,7 @@ const handleDelete= (itemId)=>{
                  <div style={{display:"flex"}}><Title >Publication:</Title><p>{item.publication}</p></div>
                  <Button  onClick={()=>{handleDelete(item.id)}} colorScheme='blue'>Delete</Button>
                
-                 <Link to = {`/blogs/${blogs.id}`}><Button colorScheme='blue'>More Details</Button></Link>
+                 <Link to = {`/item/${item.id}`}><Button colorScheme='blue'>More Details</Button></Link>
                 </Box>
              ))}
          </Outerbox>

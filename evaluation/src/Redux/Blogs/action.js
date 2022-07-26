@@ -1,8 +1,7 @@
-import axios from "axios"
+
 
 export const GET_ALL_BLOGS = "GET_ALL_BLOGS"
 
-export const DELETE_BLOGS = "DELETE_BLOGS"
 
 export const GET_ALL_BLOGS_LOADING = "GET_ALL_BLOGS_LOADING"
 
@@ -36,7 +35,4 @@ export const getAllBlogs = () => async (dispatch) => {
          dispatch(getAllBlogsFailure())
       }
 }
-export const deleteBlog = (id) => {
-    axios.delete(`http://localhost:8080/bookings/${id}`)
-    .then(() => ('Delete successful'));
-  }
+
