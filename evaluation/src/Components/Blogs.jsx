@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import axios from 'axios'
-import { useEffect } from "react";
+
  const Blogs =()=>{
     const [status, setStatus]=React.useState("")
 
