@@ -1,61 +1,49 @@
 import React from "react";
 import { useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux"
-import {loginUser} from "../Redux/Login/action"
+import {useDispatch, useSelector} from "react-redux"
+
+import axios from "axios"
+import { loginSuccess, loginError,loginLoading } from "../Redux/Auth/Action";
 
 const Login = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const navigate = useNavigate();
-  const dispatch=useDispatch();
+  const token=useSelector(state=>state.auth.token)
+  
+   const dispatch=useDispatch()
 
-  const handleLogin = () => {
-    const payload = { email, password };
-    fetch(`https://reqres.in/api/login`, {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.token) {
-          dispatch(loginUser(true))
-          navigate("/");
-        }else{
-          alert("Please fill Correct details")
-        }
+   const [loginData, setLoginData]=React.useState({
+    email:"",
+    password:""
+   })
+
+   const handleChange=(el)=>{
+    const {name,value}=el.target;
+    setLoginData(prev=>({
+        ...prev,
+        [name]:value
+    }))
+    }
+
+ const handleLogin=()=>{
+      dispatch(loginLoading())
+      axios({
+        method:"post",
+        url:"https://reqres.in/api/login",
+        data:loginData
+      }).then(res=>{
+        dispatch(loginSuccess(res.data.token))
+      }).catch(err=>{
+        dispatch(loginError())
       })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    }
 
   return (
     <div>
-      <h1>LOGIN</h1>
-      <label>
-        EMAIL
-        <input
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        PASSWORD
-        <input
-          type="text"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <button onClick={handleLogin}>LOGIN</button>
-    </div>
+    {
+       Object.keys(loginData).map((el)=><input id={el} value={loginData[el]} name={el} onChange={handleChange} label={el.toLocaleUpperCase()} variant="outlined" />)
+    }
+    <button   onClick={handleLogin} variant="contained">Login</button>
+  
+   </div>
   );
 };
 
