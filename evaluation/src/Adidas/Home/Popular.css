@@ -1,0 +1,52 @@
+.popular-div {
+  text-align: center;
+
+  margin-top: 50px;
+  margin-bottom: 150px;
+}
+
+.pop-center {
+  text-align: center;
+}
+.pop-center h5 {
+  font-size: 45px;
+  font-weight: 500;
+  letter-spacing: -3px;
+  font-style: italic;
+ 
+  color: black;
+}
+.popular-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.popular-buttons button {
+  background-color: transparent;
+  border: 1px solid rgb(201, 201, 201);
+  transition: ease-in-out 0.1s;
+  padding: 7px 15px;
+  font-size: 20px;
+  height:65px;
+}
+
+.popular-buttons button:hover {
+  border: 1px solid rgb(40, 39, 39);
+
+  padding: 7px 15px;
+}
+
+@media only screen and (max-width: 960px) {
+  .popular-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* justify-content: center; */
+    align-items: center;
+    gap: 10px;
+    margin: 0 3%;
+    /* margin-top: 50px; */
+  }
+}

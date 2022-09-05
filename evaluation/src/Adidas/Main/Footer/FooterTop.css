@@ -1,0 +1,56 @@
+.footer-top-yellow {
+  display:flex;
+  height: 150px;
+  background-color: yellow;
+  color: black;
+  font-weight: 700;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 50px;
+  font-size: 30px;
+}
+.div-brutal-video {
+  border: 2px solid black;
+  width: 200px;
+  height:70px;
+}
+.button-brutal-video {
+  display:flex;
+  background-color: black;
+  align-items: center;
+  color:white;
+  border: none;
+  display: flex;
+  height:70px;
+  width:200px;
+  margin-top: -6.5px;
+  margin-left: -6px;
+}
+.div-underbutton{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width:90%;
+  margin:auto ;
+  text-align: center;
+}
+.div-underbutton p{
+font-size: 18px;
+font-weight: 600;
+text-align: center;
+margin-top: 15px;
+}
+
+
+@media only screen and (max-width: 960px) {
+  .footer-top-yellow {
+    height: 120px;
+    background-color: yellow;
+    color: black;
+    font-weight: 700;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 50px;
+    font-size: 22px;
+  }
+}

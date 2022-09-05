@@ -1,0 +1,10 @@
+.addressbox{
+    width:430px;
+}
+.addressboxnew{
+    width:430px;  
+    padding:20px;  
+}
+.addressboxnew:hover{
+    border:1px solid black
+}

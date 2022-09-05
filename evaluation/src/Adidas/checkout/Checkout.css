@@ -1,0 +1,32 @@
+.checkout {
+    display: flex;
+    padding: 24px;
+    background-color: white;
+    height: max-content;
+
+}
+.checkoutLeft{
+    width:60%;
+padding:10px;
+margin-left: 30px;
+}
+
+.checkoutAdd {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.checkoutTitle {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.checkoutRight{
+    width:32%;
+    margin-left: 40px;
+    margin-top: 100px;
+    margin-right: 10px;
+    
+}

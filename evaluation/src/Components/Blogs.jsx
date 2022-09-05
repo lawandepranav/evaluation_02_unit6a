@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Button } from '@chakra-ui/react'
+
 import axios from 'axios'
 
  const Blogs =()=>{
@@ -70,9 +70,9 @@ const handleDelete= (itemId)=>{
                  <div style={{display:"flex"}}><Title >Published Date:</Title><p>{item.published_on}</p></div>
                  <div style={{display:"flex"}}><Title >Content:</Title><p >{item.content}</p></div>
                  <div style={{display:"flex"}}><Title >Publication:</Title><p>{item.publication}</p></div>
-                 <Button  onClick={()=>{handleDelete(item.id)}} colorScheme='blue'>Delete</Button>
+                 <button  onClick={()=>{handleDelete(item.id)}} colorScheme='blue'>Delete</button>
                
-                 <Link to = {`/item/${item.id}`}><Button colorScheme='blue'>More Details</Button></Link>
+                 <Link to = {`/item/${item.id}`}><button colorScheme='blue'>More Details</button></Link>
                 </Box>
              ))}
          </Outerbox>

@@ -1,0 +1,45 @@
+.subtotal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-top: 40px;
+}
+
+.subtotalGift {
+    display: flex;
+    align-items: center;
+}
+
+.subtotalGift>input {
+    margin-right: 5px;
+}
+
+
+.button-brutal-vid {
+    border: none;
+    padding: 12.5px 132px;
+    border: none;
+    background-color:black;
+    color: white;
+
+  }
+  .div-brutal-vid {
+    border: 2px solid black;
+    height: 55px;
+    width: 100%;
+  }
+  .button-brutal-vid a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: ease-in-out 0.5s;
+  }
+
+  .order-values{
+    display:flex;
+    justify-content: space-between;
+  }

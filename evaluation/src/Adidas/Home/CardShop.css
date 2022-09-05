@@ -1,0 +1,55 @@
+.card-shop-container{
+  padding:-20px;
+  margin: auto;
+}
+.card-group-shop {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5%;
+}
+.card-shop img {
+  width: 100%;
+ 
+}
+.card-title-who{
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+
+.card-title-who p{
+  text-align: left;
+  font-size: 50px;
+  color: black;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+
+.card-shop-container {
+  margin: 3% 3%;
+}
+
+.card-shop {
+  position: relative;
+  cursor: pointer;
+}
+.center-tag {
+
+  text-align: center;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 35%;
+  padding-top: 38%;
+  margin-left: 18px;
+  margin-top: -80%;
+}
+
+@media only screen and (max-width: 960px) {
+  .card-group-shop {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3%;
+  }
+}
